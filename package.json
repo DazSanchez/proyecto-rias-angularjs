@@ -1,0 +1,39 @@
+{
+  "name": "proyecto-rias-angularjs",
+  "version": "1.0.0",
+  "description": "Unidad 4 RIAS",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run server",
+    "server": "webpack-dev-server --history-api-fallback --inline --progress --open --watch",
+    "build": "rimraf dist && webpack --bail --progress --profile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DazSanchez/proyecto-rias-angularjs.git"
+  },
+  "keywords": [],
+  "author": "DazSanchez <programaciomhsv@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DazSanchez/proyecto-rias-angularjs/issues"
+  },
+  "homepage": "https://github.com/DazSanchez/proyecto-rias-angularjs#readme",
+  "dependencies": {
+    "angular": "^1.7.9",
+    "angular-route": "^1.7.9",
+    "angular-ui-bootstrap": "^2.5.6"
+  },
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
