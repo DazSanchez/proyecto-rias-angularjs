@@ -1,0 +1,52 @@
+<section id="catalog">
+    <header class="filters bg-light py-2">
+      <div
+        class="container d-flex justify-content-between align-items-center"
+      >
+        <p class="font-weight-bold m-0">Filtrar por:</p>
+        <button class="btn" id="toggle-filters" ng-click="$cat.onFilter()">
+          <i class="la la-filter la-lg"></i>
+        </button>
+      </div>
+    </header>
+      <form class="container mt-2" ng-if="$cat.showFilter">
+        <div class="row">
+          <div class="form-group col-sm">
+            <select class="form-control" id="kind-filter">
+              <option value="1">Tipo</option>
+              <option value="2">Estilo</option>
+            </select>
+          </div>
+
+          <div class="form-group col-sm d-none">
+            <select class="form-control" id="style-filter">
+              <option value="1">Reproducciones</option>
+              <option value="2">Contempor&aacute;neos</option>
+              <option value="3">Coloniales</option>
+              <option value="4">Art Noveu</option>
+            </select>
+          </div>
+
+          <div class="form-group col-sm">
+            <select class="form-control" id="type-filter">
+              <option value="1">Sillones</option>
+              <option value="2">Mesas</option>
+              <option value="3">Sillas</option>
+              <option value="4">Taburetes</option>
+              <option value="5">Escritorios</option>
+            </select>
+          </div>
+        </div>
+      </form>
+  </section>
+
+  <section class="d-flex flex-column container">
+    <h4>Cat&aacute;logo de productos</h4>
+    <div id="loader" class="d-none">
+      <div class="loader">
+        Cargando...
+      </div>
+    </div>
+    <div id="catalog-results" class="row"></div>
+    </div>
+  </section>

@@ -2,6 +2,7 @@
 
 import { Subscription } from 'rxjs';
 import template from './home.component.html';
+import './home.component.scss';
 
 class HomeComponent {
   constructor(usersService) {

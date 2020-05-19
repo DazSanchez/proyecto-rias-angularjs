@@ -1,0 +1,44 @@
+:root {
+  --primary: #084d68;
+  --secondary: #69c181;
+  --primary-light: #0d7685;
+  --danger: #960200;
+  --warning: #ffa630;
+  --bg-color: #eeeeee;
+
+  --banner-btn-width: 245px;
+  --banner-btn-height: 45px;
+  --banner-btn-border-color: #fff;
+  --banner-btn-boder-size: 2px;
+
+  --banner-btn-bs-x: (
+    1 * var(--banner-btn-width) - var(--banner-btn-boder-size)
+  );
+}
+
+body {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.product {
+  border: 0.5px solid #000000;
+  padding: 10px;
+  margin: 5px;
+}
+
+.image-product {
+  width: 180px;
+  height: 180px;
+  border: 1px dashed #000000;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.section {
+  margin: 10px 0px;
+}
