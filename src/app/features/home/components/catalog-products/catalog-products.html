@@ -4,12 +4,12 @@
         class="container d-flex justify-content-between align-items-center"
       >
         <p class="font-weight-bold m-0">Filtrar por:</p>
-        <button class="btn" id="toggle-filters" ng-click="$cat.onFilter()">
+        <button class="btn" id="toggle-filters" ng-click="$catalog.onFilter()">
           <i class="la la-filter la-lg"></i>
         </button>
       </div>
     </header>
-      <form class="container mt-2" ng-if="$cat.showFilter">
+      <form class="container mt-2" ng-If="$catalog.showFilter">
         <div class="row">
           <div class="form-group col-sm">
             <select class="form-control" id="kind-filter">

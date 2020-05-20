@@ -10,10 +10,12 @@ class CatalogProductsComponent {
   }
 
   $onInit() {
-    this.showFilter$ = true;
-    this.onFilter = function () {
-      console.log('false');
-    };
+    this.showFilter = false;
+  }
+
+  onFilter() {
+    this.showFilter = true;
+    console.log(this.showFilter);
   }
 }
 
@@ -21,9 +23,8 @@ class CatalogProductsComponent {
 
 export default function component() {
   return {
-    comtroller: CatalogProductsComponent,
-    selector: 'catalog-products-component',
+    controller: CatalogProductsComponent,
     template,
-    controllerAs: '$cat',
+    controllerAs: '$catalog',
   };
 }
