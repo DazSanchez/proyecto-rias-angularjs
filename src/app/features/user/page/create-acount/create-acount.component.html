@@ -1,0 +1,151 @@
+<header-component></header-component>
+<div class="contain">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div
+        class="col-10 col-sm-10 col-md-9 col-lg-7 col-xl-6 bg-white mt-5 mb-4"
+      >
+        <form method="POST" action="" class="p-2">
+          <h4 class="h4 text-center">Registro de Cliente</h4>
+          <div class="form-row">
+            <div class="form-group col-12">
+              <h5 class="h5">Tienda Especializada</h5>
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                type="text"
+                class="form-control"
+                id="RFC"
+                name="RFC"
+                placeholder="RFC (Requerido)"
+                required
+                pattern="^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$"
+                title="No es un formato de RFC v&aacute;lido"
+              />
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                class="form-control"
+                type="text"
+                name="Tienda"
+                id="Tienda"
+                placeholder="Nombre de tienda especializada (Requerido)"
+                required
+              />
+            </div>
+            <div class="form-group col-12">
+              <h5 class="h5">Datos del Usuario</h5>
+            </div>
+            <div class="form-group col-12 col-md-4">
+              <input
+                class="form-control"
+                type="text"
+                name="Nombre_Usuario"
+                id="Nombre_Usuario"
+                placeholder="Nombre (Requerido) "
+                required
+              />
+            </div>
+            <div class="form-group col-12 col-md-4">
+              <input
+                class="form-control"
+                type="text"
+                name="Apellido1_Usuario"
+                id="Apellido1_Usuario"
+                placeholder="Apellido Paterno (Requerido) "
+                required
+              />
+            </div>
+            <div class="form-group col-12 col-md-4">
+              <input
+                class="form-control"
+                type="text"
+                name="Apellido2_Usuario"
+                id="Apellido2_Usuario"
+                placeholder="Apellido Materno (Requerido) "
+                required
+              />
+            </div>
+            <div class="form-group col-12">
+              <input
+                class="form-control"
+                type="text"
+                name="Direccion_Usuario"
+                id="Direccion_Usuario"
+                placeholder="Direccion (Requerido)"
+                required
+              />
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                class="form-control"
+                type="text"
+                name="Telefono_oficina"
+                id="Tel_oficina"
+                placeholder="Telefono de oficina (Requerido)"
+                required
+                pattern="\d{10}"
+                title="Escriba los 10 d&iacute;gitos del número telef&oacute;nico"
+                maxlength="10"
+              />
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                class="form-control"
+                type="text"
+                name="Telefono_celular"
+                id="Tel_celular"
+                placeholder="Telefono celular (Opcional)"
+                pattern="\d{10}"
+                title="Escriba los 10 d&iacute;gitos del número telef&oacute;nico"
+                maxlength="10"
+              />
+            </div>
+            <div class="form-group col-12">
+              <input
+                class="form-control"
+                type="email"
+                name="Email"
+                id="Email"
+                placeholder="Correo Electr&oacute;nico (Requerido)"
+                required
+              />
+            </div>
+            <div class="form-group col-12">
+              <input
+                class="form-control"
+                type="text"
+                name="Usuario"
+                id="Usuario"
+                placeholder="Nombre de Usuario (Requerido)"
+                required
+              />
+            </div>
+            <div class="form-group col-12">
+              <input
+                class="form-control"
+                type="password"
+                name="Contraseña"
+                id="Contraseña"
+                placeholder="Contrase&ntilde;a (Requerido)"
+                required
+              />
+            </div>
+            <div class="form-group col-12 text-center">
+              <input
+                class="btn btn-primary col-6"
+                type="submit"
+                value="Registrarse"
+                style="background-color: #084d68;"
+              />
+            </div>
+          </div>
+        </form>
+        <p class="text-center">
+          ¿Ya tienes una cuenta? <a href="login.html">Ingresa</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<footer-component></footer-component>

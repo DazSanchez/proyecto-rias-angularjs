@@ -8,8 +8,9 @@ import './app.component.scss';
 import appRouting from './app.routing';
 import homeModule from './features/home/home.module';
 import loginModule from './features/login/login.module';
+import userModule from './features/user/user.module';
 
 angular
-  .module('app', [ngRoute, homeModule, loginModule, apiModule])
+  .module('app', [ngRoute, homeModule, loginModule, apiModule, userModule])
   .config(appRouting)
   .component('appComponent', appComponent());

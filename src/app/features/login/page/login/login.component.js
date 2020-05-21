@@ -1,6 +1,7 @@
 'use strict';
 
 import template from './login.component.html';
+import './login.component.scss';
 
 class LoginComponent {
   constructor() {}
