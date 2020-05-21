@@ -7,41 +7,7 @@
   <li ng-repeat="user in $homePage.users">{{ user.name }}</li>
 </ul> -->
 
-<header class="header d-flex justify-content-center align-items-center">
-  <div
-    class="header__container d-flex justify-content-between align-items-center container"
-  >
-    <a href="/">
-      <img
-        class="logo"
-        alt="FreeMarket logo"
-        src="../../../../assets/img/logo.png"
-      />
-    </a>
-    <nav class="menu d-flex align-items-center">
-      <span id="username-display" class="text-white mr-3 d-none">
-        Bienvenido, <span id="username"></span>
-      </span>
-      <a
-        id="admin-add"
-        class="btn btn-outline-secondary d-none mr-2"
-        href="admin/create_product.html"
-      >
-        <i class="la la-plus"></i>
-        Agregar producto
-      </a>
-      <button id="logout-btn" class="btn btn-outline-secondary d-none">
-        Salir
-      </button>
-      <div id="access-links">
-        <a class="text-white mr-3" href="auth/register.html">
-          Crear cuenta
-        </a>
-        <a class="text-white mr-3" href="#/login">Ingresar</a>
-      </div>
-    </nav>
-  </div>
-</header>
+<header-component></header-component>
 
 <main class="main bg-white">
   <div
@@ -63,10 +29,4 @@
   <catalog-products-component></catalog-products-component>
 </main>
 
-<footer
-  class="footer d-flex justify-content-center align-items center container"
->
-  <p class="text-muted text-center my-2">
-    Todos los derechos reservados. FreeMarket &copy; 2020.
-  </p>
-</footer>
+<footer-component></footer-component>

@@ -42,11 +42,28 @@
 
   <section class="d-flex flex-column container">
     <h4>Cat&aacute;logo de productos</h4>
-    <div id="loader" class="d-none">
-      <div class="loader">
+    <div>
+      <div class="loader" ng-If="$catalog.loader">
         Cargando...
       </div>
     </div>
-    <div id="catalog-results" class="row"></div>
+    <div id="catalog-results" class="row">
+      <h3 class="text-muted my-5 text-center" ng-If= "!$catalog.loader && !$catalog.products">No hay resultados para esta b&uacute;squeda</h3>
+    </div>
+    <div class="container-products"  ng-If="$catalog.products">
+      <div class="col-xs col-sm-6 col-lg-3 mb-3"  ng-repeat="product in $catalog.products">
+        <div class="card">
+            <img class="card-img-top" ng-src="{{product.url}}" alt="{{title}}">
+            <div class="card-body">
+            <h5 class="card-title text-ellipsis" >{{product.title}}</h5>
+            <p class="card-text">{{product.price | currency}}</p>
+            <button class="btn button-primary btn-block">
+                <i class="la la-cart-plus"></i>
+                Agregar al carrito
+            </button>
+            </div>
+        </div>
+    </div>
+    </div>
     </div>
   </section>
