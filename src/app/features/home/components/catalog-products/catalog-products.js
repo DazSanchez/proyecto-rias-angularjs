@@ -17,7 +17,6 @@ class CatalogProductsComponent {
       this.catalogProductsService.getCatalogProducts().subscribe((products) => {
         this.loader = false;
         this.products = products;
-        console.log(this.products);
       })
     );
   }

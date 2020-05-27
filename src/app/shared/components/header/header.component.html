@@ -9,22 +9,25 @@
         src="../../../assets/img/logo.png"
       />
     </a>
-    <nav class="menu d-flex align-items-center">
-      <span id="username-display" class="text-white mr-3 d-none">
-        Bienvenido, <span id="username"></span>
+    <nav class="menu d-flex align-items-center mr-2">
+      <span ng-If="$headerComponent.isAuthenticated" class="text-white mr-2">
+        Bienvenido: {{ $headerComponent.userName }}
       </span>
       <a
-        id="admin-add"
-        class="btn btn-outline-secondary d-none mr-2"
-        href="admin/create_product.html"
+        ng-If="$headerComponent.isAdmin"
+        class="btn btn-outline-secondary mr-2"
+        href="#/admin/create-product"
       >
         <i class="la la-plus"></i>
         Agregar producto
       </a>
-      <button id="logout-btn" class="btn btn-outline-secondary d-none">
+      <button
+        ng-If="$headerComponent.isAuthenticated"
+        class="btn btn-outline-secondary mr-2"
+      >
         Salir
       </button>
-      <div id="access-links">
+      <div ng-If="!$headerComponent.isAuthenticated">
         <a class="text-white mr-3" href="#/create-acount">
           Crear cuenta
         </a>

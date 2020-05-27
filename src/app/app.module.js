@@ -9,8 +9,16 @@ import appRouting from './app.routing';
 import homeModule from './features/home/home.module';
 import loginModule from './features/login/login.module';
 import userModule from './features/user/user.module';
+import adminModule from './features/admin/admin.module';
 
 angular
-  .module('app', [ngRoute, homeModule, loginModule, apiModule, userModule])
+  .module('app', [
+    ngRoute,
+    homeModule,
+    loginModule,
+    apiModule,
+    userModule,
+    adminModule,
+  ])
   .config(appRouting)
   .component('appComponent', appComponent());
