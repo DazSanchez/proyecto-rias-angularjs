@@ -5,7 +5,8 @@
     <div class="section d-flex flex-row justify-content-between">
       <a href="/" class="btn"> <i class="la la-angle-left"></i> Volver </a>
       <button
-        type="button"
+        type="submit"
+        ng-click="$createProduct.addProduct()"
         class="btn button-primary d-flex flex-row justify-content-center align-items-center"
       >
         <i class="la la-save la-2x"></i>
@@ -14,7 +15,9 @@
     </div>
 
     <form action="" class="p-2">
-      <h1 class="h5 col-auto">Crear un producto</h1>
+      <h1 class="h5 col-auto">
+        Crear un producto
+      </h1>
       <div
         class="section d-flex flex-column flex-md-row col-12 justify-content-around"
       >
@@ -22,19 +25,23 @@
           <div
             class="image-product d-flex flex-row justify-content-center align-items-center"
           >
-            <button type="button" class="btn">
-              <i class="la la-camera la-4x"></i>
-            </button>
+            <i class="la la-camera la-4x"></i>
+            <input
+              type="file"
+              id="inputFileServer"
+              class="image-product file"
+              ng-model="$createProduct.url"
+            />
           </div>
 
-          <div class="section form-group col-auto col-md-4">
+          <div class="form-group col-12 col-md-4 col-lg-5">
             <h6 class="h6">Existencia</h6>
             <input
               class="form-control"
               type="text"
-              name="existencia"
-              id="existencia"
+              ng-model="$createProduct.existencia"
               placeholder="Total"
+              pattern="[0-9]"
               required
             />
           </div>
@@ -44,8 +51,7 @@
             <input
               type="text"
               class="form-control"
-              id="model"
-              name="model"
+              ng-model="$createProduct.model"
               placeholder="Modelo"
               required
             />
@@ -53,8 +59,7 @@
           <div class="form-group col-12">
             <textarea
               class="form-control"
-              name="description"
-              id="description"
+              ng-model="$createProduct.description"
               placeholder="Descripcion"
               cols="30"
               rows="5"
@@ -68,9 +73,9 @@
               <input
                 class="form-control"
                 type="text"
-                name="alto"
-                id="alto"
+                ng-model="$createProduct.alto"
                 placeholder="Alto"
+                pattern="[0-9]"
                 required
               />
             </div>
@@ -78,9 +83,9 @@
               <input
                 class="form-control"
                 type="text"
-                name="ancho"
-                id="ancho"
+                ng-model="$createProduct.ancho"
                 placeholder="Ancho"
+                pattern="[0-9]"
                 required
               />
             </div>
@@ -88,9 +93,9 @@
               <input
                 class="form-control"
                 type="text"
-                name="largo"
-                id="largo"
+                ng-model="$createProduct.largo"
                 placeholder="Largo"
+                pattern="[0-9]"
                 required
               />
             </div>
@@ -98,30 +103,59 @@
               <input
                 class="form-control"
                 type="text"
-                name="peso"
-                id="peso"
+                ng-model="$createProduct.peso"
                 placeholder="Peso"
+                pattern="[0-9]"
                 required
               />
             </div>
             <div class="form-group col-12 col-md-4 col-lg-2">
               <h6 class="h6">Tipo mueble</h6>
-              <select class="form-control" name="tipo_mueble" required>
-                <option value="0">-Opciones-</option>
+              <select
+                class="form-control"
+                ng-model="$createProduct.tipoMueble"
+                required
+              >
+                <option value="">--Seleccionar</option>
+                <option value="1">Sillones</option>
+                <option value="2">Mesas</option>
+                <option value="3">Sillas</option>
+                <option value="4">Taburetes</option>
+                <option value="5">Escritorios</option>
               </select>
             </div>
             <div class="form-group col-12 col-md-4 col-lg-2">
               <h6 class="h6">Estilo</h6>
-              <select class="form-control" name="tipo_mueble" required>
-                <option value="0">-Opciones-</option>
+              <select
+                class="form-control"
+                ng-model="$createProduct.tipoEstilo"
+                required
+              >
+                <option value="">--Seleccionar</option>
+                <option value="1">Reproducción</option>
+                <option value="2">Contemporáneos</option>
+                <option value="3">Coloniales</option>
+                <option value="4">Art Noveu</option>
               </select>
             </div>
           </div>
 
           <div class="form-group col-12 col-md-4">
             <h6 class="h6">Material</h6>
-            <select class="form-control" name="tipo_mueble" required>
-              <option value="0">-Opciones-</option>
+            <select
+              class="form-control"
+              ng-model="$createProduct.tipoMaterial"
+              required
+            >
+              <option value="">--Seleccionar</option>
+              <option value="1">Madera</option>
+              <option value="2">Aluminio</option>
+              <option value="3">Metal</option>
+              <option value="4">Fibra</option>
+              <option value="5">Plástico y resina</option>
+              <option value="6">Barro esmaltado</option>
+              <option value="7">Cuero</option>
+              <option value="8">Vinil</option>
             </select>
           </div>
         </div>
@@ -129,5 +163,4 @@
     </form>
   </div>
 </div>
-
 <footer-component></footer-component>

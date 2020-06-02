@@ -18,6 +18,16 @@ class HeaderComponent {
       })
     );
   }
+
+  logout() {
+    localStorage.clear();
+    location.href = '/';
+  }
+
+  getUser() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  }
 }
 
 HeaderComponent.$inject = ['usersService'];

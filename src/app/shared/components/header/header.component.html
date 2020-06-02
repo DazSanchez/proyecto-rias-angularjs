@@ -13,11 +13,7 @@
       <span ng-If="$headerComponent.isAuthenticated" class="text-white mr-2">
         Bienvenido: {{ $headerComponent.userName }}
       </span>
-      <a
-        ng-If="$headerComponent.isAdmin"
-        class="btn btn-outline-secondary mr-2"
-        href="#/admin/create-product"
-      >
+      <a class="btn btn-outline-secondary mr-2" href="#/admin/create-product">
         <i class="la la-plus"></i>
         Agregar producto
       </a>
