@@ -6,15 +6,15 @@ class HeaderComponent {
   constructor(usersService) {
     this.usersService = usersService;
     this.subscriptions = new Subscription();
-    this.userName = 'Hugo Sanchez';
-    this.isAdmin = true;
-    this.isAuthenticated = true;
+    this.isAuthenticated = false;
   }
 
   $onInit() {
     this.subscriptions.add(
-      this.usersService.getUsers().subscribe((users) => {
-        this.users = users;
+      this.usersService.getUsers().subscribe((data) => {
+        this.userName = data.username;
+        this.isAdmin = data.userRole == 'CLIENTE' ? true : false;
+        this.isAuthenticated = true;
       })
     );
   }

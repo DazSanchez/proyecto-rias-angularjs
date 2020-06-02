@@ -1,3 +1,3 @@
 export default {
-  api: 'https://localhost/api/controladores',
+  api: 'http://localhost/api/controladores',
 };
