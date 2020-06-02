@@ -1,3 +1,3 @@
 export default {
-  api: 'https://jsonplaceholder.typicode.com',
+  api: 'https://localhost/api/controladores',
 };

@@ -7,11 +7,13 @@ import environment from '../../environment/environment';
 class UsersService {
   constructor($http) {
     this.http = $http;
-    this.url = `${environment.api}/users`;
+    this.url = `${environment.api}`;
   }
 
   getUsers() {
-    return from(this.http.get(this.url)).pipe(map(({ data }) => data));
+    return from(this.http.get(`${this.url}/iniciar_sesion.php`)).pipe(
+      map(({ data }) => data)
+    );
   }
 }
 

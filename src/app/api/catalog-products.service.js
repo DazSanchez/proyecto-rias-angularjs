@@ -7,11 +7,19 @@ import environment from '../../environment/environment';
 class CatalogProductsService {
   constructor($http) {
     this.http = $http;
-    this.url = `${environment.api}/photos`;
+    this.url = `${environment.api}`;
   }
 
-  getCatalogProducts() {
-    return from(this.http.get(this.url)).pipe(map(({ data }) => data));
+  getCatalogProducts(filter, q) {
+    const params = {
+      filter: filter,
+      q: q,
+    };
+    return from(
+      this.http.get(
+        `${this.url}/catalogo_productos.php?filter=${params.filter}&q=${params.q}`
+      )
+    ).pipe(map(({ data }) => data));
   }
 }
 

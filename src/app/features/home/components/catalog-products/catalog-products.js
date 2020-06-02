@@ -14,10 +14,12 @@ class CatalogProductsComponent {
     this.showFilter = false;
     this.loader = true;
     this.subscriptions.add(
-      this.catalogProductsService.getCatalogProducts().subscribe((products) => {
-        this.loader = false;
-        this.products = products;
-      })
+      this.catalogProductsService
+        .getCatalogProducts(1, 1)
+        .subscribe((products) => {
+          this.loader = false;
+          this.products = products;
+        })
     );
   }
 
