@@ -1,36 +1,32 @@
 import template from './header.component.html';
 import './header.component.scss';
-import { Subscription } from 'rxjs';
 
 class HeaderComponent {
-  constructor(usersService) {
+  constructor(usersService, window) {
+    this.w = window;
     this.usersService = usersService;
-    this.subscriptions = new Subscription();
     this.isAuthenticated = false;
+    this.isAdmin = false;
+    this.user = null;
   }
 
   $onInit() {
-    this.subscriptions.add(
-      this.usersService.getUsers().subscribe((data) => {
-        this.userName = data.username;
-        this.isAdmin = data.userRole == 'CLIENTE' ? true : false;
-        this.isAuthenticated = true;
-      })
-    );
+    const user = this.usersService.getCurrentUser();
+
+    if (user) {
+      this.user = user;
+      this.isAuthenticated = true;
+      this.isAdmin = user.userRole === 'ADMIN';
+    }
   }
 
   logout() {
     localStorage.clear();
-    location.href = '/';
-  }
-
-  getUser() {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+    this.w.location.href = '/';
   }
 }
 
-HeaderComponent.$inject = ['usersService'];
+HeaderComponent.$inject = ['usersService', '$window'];
 
 export default function component() {
   return {

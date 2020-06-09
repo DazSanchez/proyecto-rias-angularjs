@@ -1,5 +1,5 @@
-import { from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { from, throwError } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import environment from '../../environment/environment';
 
 class ProductService {
@@ -8,8 +8,36 @@ class ProductService {
     this.url = `${environment.api}`;
   }
 
-  createProduct(payload) {
-    return from(this.http.post(`${this.url}/crear_producto.php`, payload)).pipe(
+  createProduct({ imagen, ...payload }) {
+    return this.uploadImage(imagen).pipe(
+      switchMap(({ filename }) =>
+        from(
+          this.http.post(`${this.url}/crear_producto.php`, {
+            ...payload,
+            imagen: filename,
+          })
+        )
+      ),
+      map(({ data }) => data),
+      catchError(({ data }) => throwError(data))
+    );
+  }
+
+  uploadImage(image) {
+    const form = new FormData();
+    form.set('imagen', image);
+
+    return from(
+      this.http.post(`${this.url}/subir_imagen.php`, form, {
+        headers: {
+          'Content-Type': undefined,
+        },
+      })
+    ).pipe(map(({ data }) => data));
+  }
+
+  getProductOptions() {
+    return from(this.http.get(`${this.url}/obtener_opciones_mueble.php`)).pipe(
       map(({ data }) => data)
     );
   }

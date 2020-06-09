@@ -1,20 +1,29 @@
 <header-component></header-component>
 
 <div class="contain">
-  <div class="main bg-white container mt-4 pt-5">
+  <form
+    class="main bg-white container mt-4"
+    ng-submit="$createProduct.addProduct()"
+  >
     <div class="section d-flex flex-row justify-content-between">
       <a href="/" class="btn"> <i class="la la-angle-left"></i> Volver </a>
       <button
         type="submit"
-        ng-click="$createProduct.addProduct()"
         class="btn button-primary d-flex flex-row justify-content-center align-items-center"
+        ng-click="$createProduct.log()"
       >
         <i class="la la-save la-2x"></i>
         Crear
       </button>
     </div>
 
-    <form action="" class="p-2">
+    <div class="p-2">
+      <div ng-if="$createProduct.success" class="alert alert-success">
+        Se ha creado correctamente el producto
+      </div>
+      <div ng-if="$createProduct.error" class="alert alert-danger">
+        Ha ocurrido un error: {{ error.mensaje }}
+      </div>
       <h1 class="h5 col-auto">
         Crear un producto
       </h1>
@@ -25,12 +34,20 @@
           <div
             class="image-product d-flex flex-row justify-content-center align-items-center"
           >
-            <i class="la la-camera la-4x"></i>
+            <i
+              class="la la-4x"
+              ng-class="{
+                'la-check text-success': $createProduct.hasImage,
+                'la-camera': !$createProduct.hasImage
+              }"
+            ></i>
             <input
               type="file"
-              id="inputFileServer"
+              id="inputFile"
               class="image-product file"
-              ng-model="$createProduct.url"
+              ng-on-change="$createProduct.loadImage()"
+              required
+              accept="image/*"
             />
           </div>
 
@@ -39,7 +56,7 @@
             <input
               class="form-control"
               type="text"
-              ng-model="$createProduct.existencia"
+              ng-model="$createProduct.product.cantidad"
               placeholder="Total"
               pattern="[0-9]"
               required
@@ -51,7 +68,7 @@
             <input
               type="text"
               class="form-control"
-              ng-model="$createProduct.model"
+              ng-model="$createProduct.product.modelo"
               placeholder="Modelo"
               required
             />
@@ -59,7 +76,7 @@
           <div class="form-group col-12">
             <textarea
               class="form-control"
-              ng-model="$createProduct.description"
+              ng-model="$createProduct.product.descripcion"
               placeholder="Descripcion"
               cols="30"
               rows="5"
@@ -73,7 +90,7 @@
               <input
                 class="form-control"
                 type="text"
-                ng-model="$createProduct.alto"
+                ng-model="$createProduct.product.alto"
                 placeholder="Alto"
                 pattern="[0-9]"
                 required
@@ -83,7 +100,7 @@
               <input
                 class="form-control"
                 type="text"
-                ng-model="$createProduct.ancho"
+                ng-model="$createProduct.product.ancho"
                 placeholder="Ancho"
                 pattern="[0-9]"
                 required
@@ -93,7 +110,7 @@
               <input
                 class="form-control"
                 type="text"
-                ng-model="$createProduct.largo"
+                ng-model="$createProduct.product.largo"
                 placeholder="Largo"
                 pattern="[0-9]"
                 required
@@ -103,7 +120,7 @@
               <input
                 class="form-control"
                 type="text"
-                ng-model="$createProduct.peso"
+                ng-model="$createProduct.product.peso"
                 placeholder="Peso"
                 pattern="[0-9]"
                 required
@@ -113,29 +130,32 @@
               <h6 class="h6">Tipo mueble</h6>
               <select
                 class="form-control"
-                ng-model="$createProduct.tipoMueble"
+                ng-model="$createProduct.product.tipo"
                 required
               >
                 <option value="">--Seleccionar</option>
-                <option value="1">Sillones</option>
-                <option value="2">Mesas</option>
-                <option value="3">Sillas</option>
-                <option value="4">Taburetes</option>
-                <option value="5">Escritorios</option>
+                <option
+                  ng-repeat="item in $createProduct.catalogs.tipos track by item.id"
+                  ng-value="item.id"
+                >
+                  {{ item.nombre }}
+                </option>
               </select>
             </div>
             <div class="form-group col-12 col-md-4 col-lg-2">
               <h6 class="h6">Estilo</h6>
               <select
                 class="form-control"
-                ng-model="$createProduct.tipoEstilo"
+                ng-model="$createProduct.product.estilo"
                 required
               >
                 <option value="">--Seleccionar</option>
-                <option value="1">Reproducción</option>
-                <option value="2">Contemporáneos</option>
-                <option value="3">Coloniales</option>
-                <option value="4">Art Noveu</option>
+                <option
+                  ng-repeat="item in $createProduct.catalogs.estilos track by item.id"
+                  ng-value="item.id"
+                >
+                  {{ item.nombre }}
+                </option>
               </select>
             </div>
           </div>
@@ -144,23 +164,34 @@
             <h6 class="h6">Material</h6>
             <select
               class="form-control"
-              ng-model="$createProduct.tipoMaterial"
+              ng-model="$createProduct.product.material"
               required
             >
               <option value="">--Seleccionar</option>
-              <option value="1">Madera</option>
-              <option value="2">Aluminio</option>
-              <option value="3">Metal</option>
-              <option value="4">Fibra</option>
-              <option value="5">Plástico y resina</option>
-              <option value="6">Barro esmaltado</option>
-              <option value="7">Cuero</option>
-              <option value="8">Vinil</option>
+              <option
+                ng-repeat="item in $createProduct.catalogs.materiales track by item.id"
+                ng-value="item.id"
+              >
+                {{ item.nombre }}
+              </option>
             </select>
+          </div>
+
+          <div class="form-group col-12 col-md-4">
+            <h6 class="h6">Precio</h6>
+            <input
+              class="form-control"
+              type="number"
+              name="precio"
+              id="precio"
+              placeholder="Precio"
+              ng-model="$createProduct.product.precio"
+              required
+            />
           </div>
         </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
 <footer-component></footer-component>

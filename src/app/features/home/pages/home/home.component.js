@@ -1,25 +1,15 @@
 'use strict';
 
-import { Subscription } from 'rxjs';
 import template from './home.component.html';
 import './home.component.scss';
 
 class HomeComponent {
-  constructor(usersService) {
-    this.usersService = usersService;
-    this.subscriptions = new Subscription();
-  }
+  constructor() {}
 
-  $onInit() {
-    this.subscriptions.add(
-      this.usersService.getUsers().subscribe((users) => {
-        this.users = users;
-      })
-    );
-  }
+  $onInit() {}
 }
 
-HomeComponent.$inject = ['usersService'];
+HomeComponent.$inject = [];
 
 export default function component() {
   return {

@@ -10,20 +10,25 @@
       />
     </a>
     <nav class="menu d-flex align-items-center mr-2">
-      <span ng-If="$headerComponent.isAuthenticated" class="text-white mr-2">
-        Bienvenido: {{ $headerComponent.userName }}
+      <span ng-if="$headerComponent.isAuthenticated" class="text-white mr-2">
+        Bienvenido: {{ $headerComponent.user.username }}
       </span>
-      <a class="btn btn-outline-secondary mr-2" href="#/admin/create-product">
+      <a
+        ng-if="$headerComponent.isAdmin"
+        class="btn btn-outline-secondary mr-2"
+        href="#/admin/create-product"
+      >
         <i class="la la-plus"></i>
         Agregar producto
       </a>
       <button
-        ng-If="$headerComponent.isAuthenticated"
+        ng-if="$headerComponent.isAuthenticated"
         class="btn btn-outline-secondary mr-2"
+        ng-click="$headerComponent.logout()"
       >
         Salir
       </button>
-      <div ng-If="!$headerComponent.isAuthenticated">
+      <div ng-if="!$headerComponent.isAuthenticated">
         <a class="text-white mr-3" href="#/create-acount">
           Crear cuenta
         </a>

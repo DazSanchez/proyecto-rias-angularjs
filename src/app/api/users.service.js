@@ -1,7 +1,7 @@
 'use strict';
 
-import { from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { from, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import environment from '../../environment/environment';
 
 class UsersService {
@@ -10,10 +10,23 @@ class UsersService {
     this.url = `${environment.api}`;
   }
 
-  getUsers() {
-    return from(this.http.get(`${this.url}/iniciar_sesion.php`)).pipe(
-      map(({ data }) => data)
+  login(credentials) {
+    return from(
+      this.http.post(`${this.url}/iniciar_sesion.php`, credentials)
+    ).pipe(
+      map(({ data }) => data),
+      tap((user) => {
+        localStorage.setItem('user', JSON.stringify(user));
+      }),
+      catchError((err) => {
+        return throwError(err.data);
+      })
     );
+  }
+
+  getCurrentUser() {
+    const user = localStorage.getItem('user');
+    return user && JSON.parse(user);
   }
 }
 

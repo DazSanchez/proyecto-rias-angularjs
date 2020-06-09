@@ -4,14 +4,37 @@ import template from './login.component.html';
 import './login.component.scss';
 
 class LoginComponent {
-  constructor() {}
+  constructor(usersService, window) {
+    this.usersService = usersService;
+    this.w = window;
+    this.username = '';
+    this.password = '';
+    this.error = null;
+  }
 
-  $onInit() {
-    this.title = 'Login page component';
+  $onInit() {}
+
+  login() {
+    if (!this.username || !this.password) return;
+
+    this.usersService
+      .login({
+        username: this.username,
+        pwd: this.password,
+      })
+      .subscribe(
+        () => {
+          this.w.location.href = '#/home';
+        },
+        (err) => {
+          this.error = err;
+          console.log(err);
+        }
+      );
   }
 }
 
-LoginComponent.$inject = [];
+LoginComponent.$inject = ['usersService', '$window'];
 
 export default function component() {
   return {

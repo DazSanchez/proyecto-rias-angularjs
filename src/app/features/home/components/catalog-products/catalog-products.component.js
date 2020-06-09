@@ -8,24 +8,35 @@ class CatalogProductsComponent {
   constructor(catalogProductsService) {
     this.catalogProductsService = catalogProductsService;
     this.subscriptions = new Subscription();
+    this.filter = '1';
+    this.q = '1';
+    this.loader = false;
   }
 
   $onInit() {
     this.showFilter = false;
+    this.search();
+  }
+
+  toggleFilter() {
+    this.showFilter = true;
+  }
+
+  filterChanged() {
+    this.q = '1';
+    this.search();
+  }
+
+  search() {
     this.loader = true;
     this.subscriptions.add(
       this.catalogProductsService
-        .getCatalogProducts(1, 1)
+        .getCatalogProducts(this.filter, this.q)
         .subscribe((products) => {
           this.loader = false;
           this.products = products;
         })
     );
-  }
-
-  onFilter() {
-    this.showFilter = true;
-    console.log(this.showFilter);
   }
 }
 
