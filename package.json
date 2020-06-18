@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/DazSanchez/proyecto-rias-angularjs#readme",
   "dependencies": {
-    "angular": "^1.7.9",
+    "angular": "^1.8.0",
     "angular-route": "^1.7.9",
     "angular-ui-bootstrap": "^2.5.6",
     "rx-angular": "^1.1.3",
